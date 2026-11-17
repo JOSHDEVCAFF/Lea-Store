@@ -146,13 +146,13 @@ const setupPortfolioPagination = () => {
 
     let pageIndex = 0;
     const render = () => {
-      const pageSize = window.innerWidth <= 768 ? 1 : 3;
-      const pageCount = Math.max(1, Math.ceil(cards.length / pageSize));
-      pageIndex = Math.min(pageIndex, pageCount - 1);
+      // Show exactly one project at a time; users navigate with Previous/Next.
+      const pageCount = Math.max(1, cards.length);
+      pageIndex = Math.max(0, Math.min(pageIndex, pageCount - 1));
       cards.forEach((card, index) => {
-        card.hidden = !(index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize);
+        card.hidden = index !== pageIndex;
       });
-      if (pageLabel) pageLabel.textContent = `Page ${pageIndex + 1} of ${pageCount}`;
+      if (pageLabel) pageLabel.textContent = `Card ${pageIndex + 1} of ${pageCount}`;
       controls.forEach((button) => {
         button.disabled = button.dataset.pageDir === 'prev' ? pageIndex === 0 : pageIndex === pageCount - 1;
       });
@@ -166,7 +166,6 @@ const setupPortfolioPagination = () => {
     });
 
     render();
-    window.addEventListener('resize', render);
   });
 };
 
