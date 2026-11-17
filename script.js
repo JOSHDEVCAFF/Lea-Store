@@ -144,23 +144,27 @@ const setupPortfolioPagination = () => {
     const pageLabel = section.querySelector('[data-page-count]');
     if (!cards.length || !controls.length) return;
 
-    let pageIndex = 0;
+    let currentCard = 0;
     const render = () => {
-      // Show exactly one project at a time; users navigate with Previous/Next.
-      const pageCount = Math.max(1, cards.length);
-      pageIndex = Math.max(0, Math.min(pageIndex, pageCount - 1));
+      const lastCardIndex = cards.length - 1;
+      currentCard = Math.max(0, Math.min(currentCard, lastCardIndex));
+
+      // Exactly one card is visible in each section at every screen size.
       cards.forEach((card, index) => {
-        card.hidden = index !== pageIndex;
+        card.hidden = index !== currentCard;
       });
-      if (pageLabel) pageLabel.textContent = `Card ${pageIndex + 1} of ${pageCount}`;
+
+      if (pageLabel) pageLabel.textContent = `Card ${currentCard + 1} of ${cards.length}`;
       controls.forEach((button) => {
-        button.disabled = button.dataset.pageDir === 'prev' ? pageIndex === 0 : pageIndex === pageCount - 1;
+        button.disabled = button.dataset.pageDir === 'prev'
+          ? currentCard === 0
+          : currentCard === lastCardIndex;
       });
     };
 
     controls.forEach((button) => {
       button.addEventListener('click', () => {
-        pageIndex += button.dataset.pageDir === 'next' ? 1 : -1;
+        currentCard += button.dataset.pageDir === 'next' ? 1 : -1;
         render();
       });
     });
