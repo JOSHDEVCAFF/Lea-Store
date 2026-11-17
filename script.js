@@ -46,22 +46,15 @@ const mountCartSummary = () => {
     if (!cart.length) {
       checkoutItems.innerHTML = '<p class="empty-state">Your tray is empty. Explore the menu to add dishes.</p>';
     } else {
-      checkoutItems.innerHTML = cart
-        .map(
-          (item, index) => `
-            <div class="checkout-item" data-index="${index}">
-              <div>
-                <strong>${item.name}</strong>
-                <small>${item.category}</small>
-              </div>
-              <div class="checkout-item-controls">
-                <span>${formatCurrency(item.price)}</span>
-                <button type="button" class="remove-item" data-remove-index="${index}">Remove</button>
-              </div>
-            </div>
-          `
-        )
-        .join('');
+      checkoutItems.innerHTML = cart.map((item, index) => `
+        <div class="checkout-item" data-index="${index}">
+          <div><strong>${item.name}</strong><small>${item.category}</small></div>
+          <div class="checkout-item-controls">
+            <span>${formatCurrency(item.price)}</span>
+            <button type="button" class="remove-item" data-remove-index="${index}">Remove</button>
+          </div>
+        </div>
+      `).join('');
     }
   }
 
@@ -69,19 +62,12 @@ const mountCartSummary = () => {
     if (!cart.length) {
       paymentItems.innerHTML = '<p class="empty-state">Your payment summary is empty.</p>';
     } else {
-      paymentItems.innerHTML = cart
-        .map(
-          (item) => `
-            <div class="checkout-item">
-              <div>
-                <strong>${item.name}</strong>
-                <small>${item.category}</small>
-              </div>
-              <span>${formatCurrency(item.price)}</span>
-            </div>
-          `
-        )
-        .join('');
+      paymentItems.innerHTML = cart.map((item) => `
+        <div class="checkout-item">
+          <div><strong>${item.name}</strong><small>${item.category}</small></div>
+          <span>${formatCurrency(item.price)}</span>
+        </div>
+      `).join('');
     }
   }
 
@@ -102,6 +88,7 @@ const handleCartRemoval = () => {
       setCart(cart);
       updateCartCount();
       mountCartSummary();
+      handleCartRemoval();
     });
   });
 };
@@ -111,14 +98,11 @@ const handleAddToTray = () => {
     button.addEventListener('click', () => {
       const card = button.closest('.menu-card');
       if (!card) return;
-
-      const item = {
+      addItemToTray({
         name: card.dataset.name,
         category: card.dataset.category,
         price: Number(card.dataset.price || 0),
-      };
-
-      addItemToTray(item);
+      });
       button.textContent = 'Added';
       button.classList.add('is-added');
       setTimeout(() => {
@@ -130,17 +114,14 @@ const handleAddToTray = () => {
 };
 
 const setupFilters = () => {
-  const filterButtons = document.querySelectorAll('.filter-btn');
+  const filterButtons = document.querySelectorAll('.filter-btn:not(.portfolio-category-btn)');
   const menuCards = document.querySelectorAll('.menu-card');
-
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
       filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
-
       menuCards.forEach((card) => {
-        const visible = filter === 'all' || card.dataset.category === filter;
-        card.style.display = visible ? 'block' : 'none';
+        card.style.display = filter === 'all' || card.dataset.category === filter ? 'block' : 'none';
       });
     });
   });
@@ -150,13 +131,8 @@ const setupSlider = () => {
   const slides = document.querySelectorAll('.feature-slide');
   const sliderButtons = document.querySelectorAll('[data-slide]');
   if (!slides.length) return;
-
   let activeIndex = 0;
-
-  const showSlide = (index) => {
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-  };
-
+  const showSlide = (index) => slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
   sliderButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const direction = button.dataset.slide === 'next' ? 1 : -1;
@@ -179,33 +155,57 @@ const setupFaq = () => {
 
 const setupPortfolioCarousel = () => {
   const grid = document.querySelector('#portfolioGrid');
-  const buttons = document.querySelectorAll('[data-portfolio-dir]');
-  if (!grid || !buttons.length) return;
+  if (!grid) return;
 
-  const cards = [...grid.children];
+  const cards = [...grid.querySelectorAll('.project-card')];
+  const categoryButtons = [...document.querySelectorAll('[data-portfolio-category]')];
+  const pageButtons = [...document.querySelectorAll('[data-portfolio-dir]')];
+  const pageLabel = document.querySelector('#portfolioPageCount');
+  if (!cards.length || !categoryButtons.length || !pageButtons.length) return;
+
+  let activeCategory = categoryButtons[0].dataset.portfolioCategory;
   let pageIndex = 0;
 
   const renderPortfolio = () => {
-    const currentSize = window.innerWidth <= 768 ? 1 : 3;
-    const currentTotalPages = Math.ceil(cards.length / currentSize);
-    const safeIndex = Math.min(pageIndex, Math.max(currentTotalPages - 1, 0));
+    const matchingCards = cards.filter((card) => card.dataset.portfolioCategory === activeCategory);
+    const pageSize = window.innerWidth <= 768 ? 1 : 3;
+    const pageCount = Math.max(1, Math.ceil(matchingCards.length / pageSize));
+    pageIndex = Math.min(pageIndex, pageCount - 1);
 
-    cards.forEach((card, idx) => {
-      const page = Math.floor(idx / currentSize);
-      card.style.display = page === safeIndex ? 'block' : 'none';
+    cards.forEach((card) => {
+      card.hidden = card.dataset.portfolioCategory !== activeCategory;
+      card.style.display = 'none';
     });
 
-    buttons.forEach((button) => {
-      button.disabled = currentTotalPages <= 1;
+    matchingCards.forEach((card, index) => {
+      const onCurrentPage = index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize;
+      card.style.display = onCurrentPage ? 'flex' : 'none';
     });
+
+    categoryButtons.forEach((button) => {
+      const selected = button.dataset.portfolioCategory === activeCategory;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+
+    pageButtons.forEach((button) => {
+      button.disabled = button.dataset.portfolioDir === 'prev' ? pageIndex === 0 : pageIndex >= pageCount - 1;
+    });
+
+    if (pageLabel) pageLabel.textContent = `Page ${pageIndex + 1} of ${pageCount}`;
   };
 
-  buttons.forEach((button) => {
+  categoryButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      const currentSize = window.innerWidth <= 768 ? 1 : 3;
-      const pageCount = Math.ceil(cards.length / currentSize);
-      const direction = button.dataset.portfolioDir === 'next' ? 1 : -1;
-      pageIndex = (pageIndex + direction + pageCount) % pageCount;
+      activeCategory = button.dataset.portfolioCategory;
+      pageIndex = 0;
+      renderPortfolio();
+    });
+  });
+
+  pageButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      pageIndex += button.dataset.portfolioDir === 'next' ? 1 : -1;
       renderPortfolio();
     });
   });
@@ -218,15 +218,16 @@ const setupMenuToggle = () => {
   const toggle = document.querySelector('.menu-toggle');
   const sideMenu = document.querySelector('.side-menu');
   if (!toggle || !sideMenu) return;
-
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     sideMenu.classList.toggle('open');
   });
-
   sideMenu.querySelectorAll('.nav-item').forEach((link) => {
-    link.addEventListener('click', () => sideMenu.classList.remove('open'));
+    link.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   });
 };
 
@@ -238,7 +239,6 @@ const handleFormSubmit = () => {
       alert('Thanks for reaching out! Your message has been queued for the Lea Tapdasan team.');
     });
   }
-
   const paymentForm = document.querySelector('.payment-form');
   if (paymentForm) {
     paymentForm.addEventListener('submit', (event) => {
@@ -260,26 +260,3 @@ document.addEventListener('DOMContentLoaded', () => {
   mountCartSummary();
   handleCartRemoval();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
