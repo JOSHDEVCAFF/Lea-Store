@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Showcase Portfolio | Lea Tapdasan</title>
+    <meta
+      name="description"
+      content="Browse the portfolio and food showcase gallery from Lea Tapdasan Kitchen in Mandaue City, Cebu."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="brand-mark">
+            <span class="brand-icon">LT</span>
+          </div>
+          <div class="brand-copy">
+            <div class="brand-name">Lea Tapdasan</div>
+            <div class="brand-tag">Asian Fusion Kitchen</div>
+          </div>
+        </div>
+
+        <div class="status-ticker">
+          <span class="ticker-dot"></span>
+          Open Now · Mandaue City, Cebu · Dine-in, Takeout &amp; Delivery
+        </div>
+
+        <a href="checkout.html" class="tray-link" aria-label="Your tray">
+          Your Tray (<span data-cart-count>0</span>)
+        </a>
+      </header>
+
+      <div class="main-layout">
+        <aside class="side-menu" id="sideMenu">
+          <div class="side-menu-header">
+            <div>
+              <p class="eyebrow">Menu Index</p>
+              <h2>Explore</h2>
+            </div>
+          </div>
+          <nav class="side-nav" aria-label="Main navigation">
+            <a href="index.html" class="nav-item"><span>01</span> Menu Shop</a>
+            <a href="about.html" class="nav-item"><span>02</span> About Us</a>
+            <a href="services.html" class="nav-item"><span>03</span> Culinary Services</a>
+            <a href="contact.html" class="nav-item"><span>04</span> Contact Us</a>
+            <a href="faq.html" class="nav-item"><span>05</span> FAQ</a>
+            <a href="portfolio.html" class="nav-item active"><span>06</span> Food Showcase Portfolio</a>
+            <a href="index.html#featured" class="nav-item"><span>07</span> Featured Specials</a>
+            <a href="checkout.html" class="nav-item"><span>08</span> Checkout Summary</a>
+            <a href="payment.html" class="nav-item"><span>09</span> Payment Gateway</a>
+          </nav>
+        </aside>
+
+        <main class="content-panel page-content">
+          <section class="page-hero simple-hero">
+            <p class="eyebrow accent">Portfolio</p>
+            <h1>Signature dishes, plated with story and soul.</h1>
+          </section>
+
+          <section class="portfolio-wrap">
+            <div id="portfolioGrid" class="portfolio-grid" aria-live="polite">
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80" alt="Ramen bowl" />
+                <div class="portfolio-copy">
+                  <span>Signature ramen</span>
+                  <h3>Slow-simmered broth</h3>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=80" alt="Dumpling plate" />
+                <div class="portfolio-copy">
+                  <span>Appetizer favorite</span>
+                  <h3>Golden dumplings</h3>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Sushi platter" />
+                <div class="portfolio-copy">
+                  <span>Chef's selection</span>
+                  <h3>Fresh sushi board</h3>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="Adobo meal" />
+                <div class="portfolio-copy">
+                  <span>Filipino classic</span>
+                  <h3>Chicken adobo</h3>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=900&q=80" alt="Chinese dumplings and rice" />
+                <div class="portfolio-copy">
+                  <span>Comfort plate</span>
+                  <h3>Wok-fired favorites</h3>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80" alt="Hot platter" />
+                <div class="portfolio-copy">
+                  <span>House special</span>
+                  <h3>Sizzling sisig</h3>
+                </div>
+              </article>
+            </div>
+
+            <div class="pagination-controls">
+              <button class="pagination-btn" data-portfolio-dir="prev">Previous</button>
+              <button class="pagination-btn" data-portfolio-dir="next">Next</button>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <footer class="site-footer">
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Quick guide</p>
+            <h3>Pickup &amp; delivery</h3>
+          </div>
+          <ul>
+            <li>Pickup ready in 20–30 minutes</li>
+            <li>Delivery within Mandaue City and Cebu</li>
+            <li>Cashless and COD available</li>
+          </ul>
+        </aside>
+
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Visit us</p>
+            <h3>Mandaue City</h3>
+          </div>
+          <ul>
+            <li>Gorordo Avenue, Mandaue City, Cebu</li>
+            <li>Mon–Sun · 10:00 AM to 10:00 PM</li>
+            <li>hello@leatapdasan.ph</li>
+          </ul>
+        </aside>
+
+        <div class="footer-bottom">
+          <p>© 2026 Lea Tapdasan Kitchen. Crafted for the Cebu food community.</p>
+          <p>Preview notice: Orders are for demo storefront experience.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

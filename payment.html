@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Payment | Lea Tapdasan</title>
+    <meta
+      name="description"
+      content="Complete your order with secure payment options including card, cash on delivery, and digital wallets."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="brand-mark">
+            <span class="brand-icon">LT</span>
+          </div>
+          <div class="brand-copy">
+            <div class="brand-name">Lea Tapdasan</div>
+            <div class="brand-tag">Asian Fusion Kitchen</div>
+          </div>
+        </div>
+
+        <div class="status-ticker">
+          <span class="ticker-dot"></span>
+          Open Now · Mandaue City, Cebu · Dine-in, Takeout &amp; Delivery
+        </div>
+
+        <a href="checkout.html" class="tray-link" aria-label="Your tray">
+          Your Tray (<span data-cart-count>0</span>)
+        </a>
+      </header>
+
+      <div class="main-layout">
+        <aside class="side-menu" id="sideMenu">
+          <div class="side-menu-header">
+            <div>
+              <p class="eyebrow">Menu Index</p>
+              <h2>Explore</h2>
+            </div>
+          </div>
+          <nav class="side-nav" aria-label="Main navigation">
+            <a href="index.html" class="nav-item"><span>01</span> Menu Shop</a>
+            <a href="about.html" class="nav-item"><span>02</span> About Us</a>
+            <a href="services.html" class="nav-item"><span>03</span> Culinary Services</a>
+            <a href="contact.html" class="nav-item"><span>04</span> Contact Us</a>
+            <a href="faq.html" class="nav-item"><span>05</span> FAQ</a>
+            <a href="portfolio.html" class="nav-item"><span>06</span> Food Showcase Portfolio</a>
+            <a href="index.html#featured" class="nav-item"><span>07</span> Featured Specials</a>
+            <a href="checkout.html" class="nav-item"><span>08</span> Checkout Summary</a>
+            <a href="payment.html" class="nav-item active"><span>09</span> Payment Gateway</a>
+          </nav>
+        </aside>
+
+        <main class="content-panel page-content payment-page">
+          <section class="page-hero simple-hero">
+            <p class="eyebrow accent">Secure checkout</p>
+            <h1>Finish your order with a payment method you trust.</h1>
+          </section>
+
+          <section class="checkout-layout">
+            <div class="checkout-summary card-panel">
+              <h3>Payment summary</h3>
+              <div id="paymentItems" class="checkout-items"></div>
+              <div class="totals">
+                <div><span>Subtotal</span> <strong id="paymentSubtotal">₱0</strong></div>
+                <div><span>Delivery</span> <strong id="paymentDelivery">₱0</strong></div>
+                <div class="grand-total"><span>Total</span> <strong id="paymentTotal">₱0</strong></div>
+              </div>
+            </div>
+
+            <form class="checkout-form card-panel payment-form">
+              <h3>Choose payment</h3>
+              <div class="payment-options">
+                <label class="payment-method"><input type="radio" name="paymentType" value="Credit card" checked /> Credit card</label>
+                <label class="payment-method"><input type="radio" name="paymentType" value="Cash on delivery" /> Cash on delivery</label>
+                <label class="payment-method"><input type="radio" name="paymentType" value="Digital wallet" /> Digital wallet</label>
+              </div>
+
+              <label>
+                Cardholder name
+                <input type="text" placeholder="Name on card" />
+              </label>
+              <label>
+                Card number
+                <input type="text" placeholder="1234 5678 9012 3456" />
+              </label>
+              <div class="form-row">
+                <label>
+                  Expiry date
+                  <input type="text" placeholder="MM/YY" />
+                </label>
+                <label>
+                  CVV
+                  <input type="text" placeholder="123" />
+                </label>
+              </div>
+              <button type="submit" class="primary-btn checkout-submit">Confirm payment</button>
+            </form>
+          </section>
+        </main>
+      </div>
+
+      <footer class="site-footer">
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Quick guide</p>
+            <h3>Pickup &amp; delivery</h3>
+          </div>
+          <ul>
+            <li>Pickup ready in 20–30 minutes</li>
+            <li>Delivery within Mandaue City and Cebu</li>
+            <li>Cashless and COD available</li>
+          </ul>
+        </aside>
+
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Visit us</p>
+            <h3>Mandaue City</h3>
+          </div>
+          <ul>
+            <li>Gorordo Avenue, Mandaue City, Cebu</li>
+            <li>Mon–Sun · 10:00 AM to 10:00 PM</li>
+            <li>hello@leatapdasan.ph</li>
+          </ul>
+        </aside>
+
+        <div class="footer-bottom">
+          <p>© 2026 Lea Tapdasan Kitchen. Crafted for the Cebu food community.</p>
+          <p>Preview notice: Orders are for demo storefront experience.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

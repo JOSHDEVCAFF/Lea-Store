@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lea Tapdasan | Asian Fusion Kitchen</title>
+    <meta
+      name="description"
+      content="Lea Tapdasan Asian fusion restaurant and online food ordering for Japanese, Chinese, and Filipino favorites in Mandaue City, Cebu."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="brand-mark">
+            <span class="brand-icon">LT</span>
+          </div>
+          <div class="brand-copy">
+            <div class="brand-name">Lea Tapdasan</div>
+            <div class="brand-tag">Asian Fusion Kitchen</div>
+          </div>
+        </div>
+
+        <div class="status-ticker">
+          <span class="ticker-dot"></span>
+          Open Now · Mandaue City, Cebu · Dine-in, Takeout &amp; Delivery
+        </div>
+
+        <a href="checkout.html" class="tray-link" aria-label="Your tray">
+          Your Tray (<span data-cart-count>0</span>)
+        </a>
+      </header>
+
+      <div class="main-layout">
+        <aside class="side-menu" id="sideMenu">
+          <div class="side-menu-header">
+            <div>
+              <p class="eyebrow">Menu Index</p>
+              <h2>Explore</h2>
+            </div>
+          </div>
+          <nav class="side-nav" aria-label="Main navigation">
+            <a href="index.html" class="nav-item active"><span>01</span> Menu Shop</a>
+            <a href="about.html" class="nav-item"><span>02</span> About Us</a>
+            <a href="services.html" class="nav-item"><span>03</span> Culinary Services</a>
+            <a href="contact.html" class="nav-item"><span>04</span> Contact Us</a>
+            <a href="faq.html" class="nav-item"><span>05</span> FAQ</a>
+            <a href="portfolio.html" class="nav-item"><span>06</span> Food Showcase Portfolio</a>
+            <a href="index.html#featured" class="nav-item"><span>07</span> Featured Specials</a>
+            <a href="checkout.html" class="nav-item"><span>08</span> Checkout Summary</a>
+            <a href="payment.html" class="nav-item"><span>09</span> Payment Gateway</a>
+          </nav>
+        </aside>
+
+        <main class="content-panel">
+          <section class="hero-section">
+            <div class="hero-copy">
+              <p class="eyebrow accent">Chef-crafted comfort</p>
+              <h1>Authentic Asian flavors, crafted for every craving.</h1>
+              <p class="hero-text">
+                Savor a handpicked mix of Japanese, Chinese, and Filipino favorites—slow-cooked,
+                flame-grilled, and plated for your next family feast or late-night bite.
+              </p>
+              <div class="cta-row">
+                <a href="#catalog" class="primary-btn">Explore Dishes</a>
+                <a href="services.html" class="secondary-btn">View Services</a>
+              </div>
+              <div class="hero-meta">
+                <div>
+                  <strong>4.9/5</strong>
+                  <span>Guest Rating</span>
+                </div>
+                <div>
+                  <strong>30 min</strong>
+                  <span>Average Delivery</span>
+                </div>
+                <div>
+                  <strong>3 cuisines</strong>
+                  <span>House Specialties</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="image-card featured-card large">
+                <img
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                  alt="Signature sushi platter"
+                />
+              </div>
+              <div class="floating-badge">
+                <span>Chef's Choice</span>
+                <strong>Lea's signature bun</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="feature-banner" id="featured">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow accent">Featured specials</p>
+                <h2>Fresh picks from the kitchen</h2>
+              </div>
+              <div class="slide-controls" aria-label="Featured slide controls">
+                <button class="slider-btn" data-slide="prev" aria-label="Previous slide">←</button>
+                <button class="slider-btn" data-slide="next" aria-label="Next slide">→</button>
+              </div>
+            </div>
+
+            <div class="feature-slider">
+              <article class="feature-slide active">
+                <div class="feature-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80"
+                    alt="Bowl of ramen"
+                  />
+                </div>
+                <div class="feature-copy">
+                  <p class="eyebrow">Limited drop</p>
+                  <h3>Spicy miso ramen</h3>
+                  <p>
+                    Silky noodles, rich broth, soft-boiled egg, shiitake, and chili crunch for a bold finish.
+                  </p>
+                  <div class="feature-meta">
+                    <span>₱329</span>
+                    <span>1,280 kcal</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="feature-slide">
+                <div class="feature-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=900&q=80"
+                    alt="Chinese dumplings"
+                  />
+                </div>
+                <div class="feature-copy">
+                  <p class="eyebrow">House favorite</p>
+                  <h3>Garlic dumpling platter</h3>
+                  <p>
+                    Crispy pan-fried dumplings with sesame soy dip, scallions, and a chili-soy glaze.
+                  </p>
+                  <div class="feature-meta">
+                    <span>₱249</span>
+                    <span>4 pcs</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="feature-slide">
+                <div class="feature-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                    alt="Filipino dishes"
+                  />
+                </div>
+                <div class="feature-copy">
+                  <p class="eyebrow">Feast set</p>
+                  <h3>Adobo + sinigang combo</h3>
+                  <p>
+                    A comforting duo of savory adobo and tamarind sinigang served with steamed rice.
+                  </p>
+                  <div class="feature-meta">
+                    <span>₱389</span>
+                    <span>Family size</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="menu-section" id="catalog">
+            <div class="section-heading inline-heading">
+              <div>
+                <p class="eyebrow accent">Our menu</p>
+                <h2>Asian favorites, sorted by taste</h2>
+              </div>
+              <div class="filter-group" aria-label="Cuisine filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Japanese">Japanese</button>
+                <button class="filter-btn" data-filter="Chinese">Chinese</button>
+                <button class="filter-btn" data-filter="Filipino">Filipino</button>
+              </div>
+            </div>
+
+            <div class="menu-grid">
+              <article class="menu-card" data-category="Japanese" data-name="Miso Salmon Bowl" data-price="369">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" alt="Miso salmon bowl" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Japanese</span>
+                    <span class="menu-price">₱369</span>
+                  </div>
+                  <h3>Miso Salmon Bowl</h3>
+                  <p>Seared salmon over jasmine rice with greens, cucumber, and savory miso glaze.</p>
+                  <div class="chip-row">
+                    <span>Gluten-free</span>
+                    <span>High protein</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Japanese" data-name="Katsu Curry" data-price="299">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80" alt="Katsu curry" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Japanese</span>
+                    <span class="menu-price">₱299</span>
+                  </div>
+                  <h3>Katsu Curry</h3>
+                  <p>Crispy chicken cutlet with Japanese curry, rice, and a bright cabbage salad.</p>
+                  <div class="chip-row">
+                    <span>Comfort</span>
+                    <span>Hearty</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Japanese" data-name="Dragon Roll" data-price="259">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80" alt="Dragon roll sushi" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Japanese</span>
+                    <span class="menu-price">₱259</span>
+                  </div>
+                  <h3>Dragon Roll</h3>
+                  <p>Fresh sushi roll with eel, avocado, cucumber, and tobiko finish.</p>
+                  <div class="chip-row">
+                    <span>Signature</span>
+                    <span>Seafood</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Chinese" data-name="Garlic Noodles" data-price="219">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1557872943-16a7ac2a6b1d?auto=format&fit=crop&w=800&q=80" alt="Garlic noodles" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Chinese</span>
+                    <span class="menu-price">₱219</span>
+                  </div>
+                  <h3>Garlic Noodles</h3>
+                  <p>Wok-tossed noodles, savory soy butter, scallions, and a peppery finish.</p>
+                  <div class="chip-row">
+                    <span>Wok-fired</span>
+                    <span>Rich</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Chinese" data-name="Crispy Pork Dumplings" data-price="239">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="Dumplings" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Chinese</span>
+                    <span class="menu-price">₱239</span>
+                  </div>
+                  <h3>Crispy Pork Dumplings</h3>
+                  <p>Golden dumplings with juicy pork filling, ginger, and chili-scallion dip.</p>
+                  <div class="chip-row">
+                    <span>Shareable</span>
+                    <span>Flavorful</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Chinese" data-name="Yang Chow Fried Rice" data-price="269">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80" alt="Fried rice" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Chinese</span>
+                    <span class="menu-price">₱269</span>
+                  </div>
+                  <h3>Yang Chow Fried Rice</h3>
+                  <p>Wok-fried rice with vegetables, egg, and tender bites of roast pork.</p>
+                  <div class="chip-row">
+                    <span>Classic</span>
+                    <span>Family size</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Filipino" data-name="Chicken Adobo" data-price="279">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" alt="Chicken adobo" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Filipino</span>
+                    <span class="menu-price">₱279</span>
+                  </div>
+                  <h3>Chicken Adobo</h3>
+                  <p>Slow-simmered chicken in vinegar-soy sauce, garlic, pepper, and bay leaves.</p>
+                  <div class="chip-row">
+                    <span>Traditional</span>
+                    <span>Comfort food</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Filipino" data-name="Sizzling Sisig" data-price="299">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Sisig" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Filipino</span>
+                    <span class="menu-price">₱299</span>
+                  </div>
+                  <h3>Sizzling Sisig</h3>
+                  <p>Chopped pork face with calamansi, onions, chili, and a hot plate finish.</p>
+                  <div class="chip-row">
+                    <span>Bold</span>
+                    <span>Spicy</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="Filipino" data-name="Sinigang Bowl" data-price="319">
+                <div class="menu-image">
+                  <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=800&q=80" alt="Sinigang" />
+                </div>
+                <div class="menu-card-body">
+                  <div class="menu-topline">
+                    <span class="menu-tag">Filipino</span>
+                    <span class="menu-price">₱319</span>
+                  </div>
+                  <h3>Sinigang Bowl</h3>
+                  <p>Freshly brewed tamarind soup with pork, greens, tomatoes, and warm rice.</p>
+                  <div class="chip-row">
+                    <span>Hearty</span>
+                    <span>Homestyle</span>
+                  </div>
+                  <button class="add-btn" data-add-to-tray>Add to Tray</button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <footer class="site-footer">
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Quick guide</p>
+            <h3>Pickup &amp; delivery</h3>
+          </div>
+          <ul>
+            <li>Pickup ready in 20–30 minutes</li>
+            <li>Delivery within Mandaue City and Cebu</li>
+            <li>Cashless and COD available</li>
+          </ul>
+        </aside>
+
+        <aside class="footer-panel">
+          <div>
+            <p class="eyebrow accent">Visit us</p>
+            <h3>Mandaue City</h3>
+          </div>
+          <ul>
+            <li>Gorordo Avenue, Mandaue City, Cebu</li>
+            <li>Mon–Sun · 10:00 AM to 10:00 PM</li>
+            <li>hello@leatapdasan.ph</li>
+          </ul>
+        </aside>
+
+        <div class="footer-bottom">
+          <p>© 2026 Lea Tapdasan Kitchen. Crafted for the Cebu food community.</p>
+          <p>Preview notice: Orders are for demo storefront experience.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
