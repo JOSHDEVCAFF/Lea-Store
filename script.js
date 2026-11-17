@@ -183,32 +183,28 @@ const setupPortfolioCarousel = () => {
   if (!grid || !buttons.length) return;
 
   const cards = [...grid.children];
-  const isMobile = window.innerWidth <= 768;
   let pageIndex = 0;
-
-  const pageSize = isMobile ? 1 : 3;
-  const totalPages = Math.ceil(cards.length / pageSize);
 
   const renderPortfolio = () => {
     const currentSize = window.innerWidth <= 768 ? 1 : 3;
     const currentTotalPages = Math.ceil(cards.length / currentSize);
-    const safeIndex = Math.min(pageIndex, currentTotalPages - 1);
+    const safeIndex = Math.min(pageIndex, Math.max(currentTotalPages - 1, 0));
 
     cards.forEach((card, idx) => {
       const page = Math.floor(idx / currentSize);
       card.style.display = page === safeIndex ? 'block' : 'none';
     });
 
-    if (currentTotalPages <= 1) {
-      buttons.forEach((button) => (button.disabled = true));
-    }
+    buttons.forEach((button) => {
+      button.disabled = currentTotalPages <= 1;
+    });
   };
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      const direction = button.dataset.portfolioDir === 'next' ? 1 : -1;
       const currentSize = window.innerWidth <= 768 ? 1 : 3;
       const pageCount = Math.ceil(cards.length / currentSize);
+      const direction = button.dataset.portfolioDir === 'next' ? 1 : -1;
       pageIndex = (pageIndex + direction + pageCount) % pageCount;
       renderPortfolio();
     });
@@ -227,6 +223,10 @@ const setupMenuToggle = () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     sideMenu.classList.toggle('open');
+  });
+
+  sideMenu.querySelectorAll('.nav-item').forEach((link) => {
+    link.addEventListener('click', () => sideMenu.classList.remove('open'));
   });
 };
 
@@ -260,6 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
   mountCartSummary();
   handleCartRemoval();
 });
+
+
+
+
+
+
 
 
 
