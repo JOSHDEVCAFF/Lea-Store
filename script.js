@@ -149,12 +149,9 @@ const setupPortfolioPagination = () => {
       const pageSize = window.innerWidth <= 768 ? 1 : 3;
       const pageCount = Math.max(1, Math.ceil(cards.length / pageSize));
       pageIndex = Math.min(pageIndex, pageCount - 1);
-
       cards.forEach((card, index) => {
-        const visible = index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize;
-        card.hidden = !visible;
+        card.hidden = !(index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize);
       });
-
       if (pageLabel) pageLabel.textContent = `Page ${pageIndex + 1} of ${pageCount}`;
       controls.forEach((button) => {
         button.disabled = button.dataset.pageDir === 'prev' ? pageIndex === 0 : pageIndex === pageCount - 1;
