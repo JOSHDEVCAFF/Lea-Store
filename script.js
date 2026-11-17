@@ -14,9 +14,8 @@ const setCart = (items) => localStorage.setItem(cartKey, JSON.stringify(items));
 
 const updateCartCount = () => {
   const cart = getCart();
-  const count = cart.length;
   document.querySelectorAll('[data-cart-count]').forEach((node) => {
-    node.textContent = count;
+    node.textContent = cart.length;
   });
 };
 
@@ -37,38 +36,23 @@ const mountCartSummary = () => {
   const paymentSubtotalEl = document.querySelector('#paymentSubtotal');
   const paymentDeliveryEl = document.querySelector('#paymentDelivery');
   const paymentTotalEl = document.querySelector('#paymentTotal');
-
   const subtotal = cart.reduce((sum, item) => sum + Number(item.price || 0), 0);
   const delivery = cart.length ? 65 : 0;
   const total = subtotal + delivery;
 
   if (checkoutItems) {
-    if (!cart.length) {
-      checkoutItems.innerHTML = '<p class="empty-state">Your tray is empty. Explore the menu to add dishes.</p>';
-    } else {
-      checkoutItems.innerHTML = cart.map((item, index) => `
-        <div class="checkout-item" data-index="${index}">
-          <div><strong>${item.name}</strong><small>${item.category}</small></div>
-          <div class="checkout-item-controls">
-            <span>${formatCurrency(item.price)}</span>
-            <button type="button" class="remove-item" data-remove-index="${index}">Remove</button>
-          </div>
-        </div>
-      `).join('');
-    }
+    checkoutItems.innerHTML = cart.length ? cart.map((item, index) => `
+      <div class="checkout-item" data-index="${index}">
+        <div><strong>${item.name}</strong><small>${item.category}</small></div>
+        <div class="checkout-item-controls"><span>${formatCurrency(item.price)}</span><button type="button" class="remove-item" data-remove-index="${index}">Remove</button></div>
+      </div>
+    `).join('') : '<p class="empty-state">Your tray is empty. Explore the menu to add dishes.</p>';
   }
 
   if (paymentItems) {
-    if (!cart.length) {
-      paymentItems.innerHTML = '<p class="empty-state">Your payment summary is empty.</p>';
-    } else {
-      paymentItems.innerHTML = cart.map((item) => `
-        <div class="checkout-item">
-          <div><strong>${item.name}</strong><small>${item.category}</small></div>
-          <span>${formatCurrency(item.price)}</span>
-        </div>
-      `).join('');
-    }
+    paymentItems.innerHTML = cart.length ? cart.map((item) => `
+      <div class="checkout-item"><div><strong>${item.name}</strong><small>${item.category}</small></div><span>${formatCurrency(item.price)}</span></div>
+    `).join('') : '<p class="empty-state">Your payment summary is empty.</p>';
   }
 
   if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
@@ -82,9 +66,8 @@ const mountCartSummary = () => {
 const handleCartRemoval = () => {
   document.querySelectorAll('[data-remove-index]').forEach((button) => {
     button.addEventListener('click', () => {
-      const index = Number(button.getAttribute('data-remove-index'));
       const cart = getCart();
-      cart.splice(index, 1);
+      cart.splice(Number(button.dataset.removeIndex), 1);
       setCart(cart);
       updateCartCount();
       mountCartSummary();
@@ -153,65 +136,41 @@ const setupFaq = () => {
   });
 };
 
-const setupPortfolioCarousel = () => {
-  const grid = document.querySelector('#portfolioGrid');
-  if (!grid) return;
+const setupPortfolioPagination = () => {
+  document.querySelectorAll('[data-portfolio-section]').forEach((section) => {
+    const grid = section.querySelector('[data-project-grid]');
+    const cards = grid ? [...grid.querySelectorAll('.project-card')] : [];
+    const controls = [...section.querySelectorAll('[data-page-dir]')];
+    const pageLabel = section.querySelector('[data-page-count]');
+    if (!cards.length || !controls.length) return;
 
-  const cards = [...grid.querySelectorAll('.project-card')];
-  const categoryButtons = [...document.querySelectorAll('[data-portfolio-category]')];
-  const pageButtons = [...document.querySelectorAll('[data-portfolio-dir]')];
-  const pageLabel = document.querySelector('#portfolioPageCount');
-  if (!cards.length || !categoryButtons.length || !pageButtons.length) return;
+    let pageIndex = 0;
+    const render = () => {
+      const pageSize = window.innerWidth <= 768 ? 1 : 3;
+      const pageCount = Math.max(1, Math.ceil(cards.length / pageSize));
+      pageIndex = Math.min(pageIndex, pageCount - 1);
 
-  let activeCategory = categoryButtons[0].dataset.portfolioCategory;
-  let pageIndex = 0;
+      cards.forEach((card, index) => {
+        const visible = index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize;
+        card.hidden = !visible;
+      });
 
-  const renderPortfolio = () => {
-    const matchingCards = cards.filter((card) => card.dataset.portfolioCategory === activeCategory);
-    const pageSize = window.innerWidth <= 768 ? 1 : 3;
-    const pageCount = Math.max(1, Math.ceil(matchingCards.length / pageSize));
-    pageIndex = Math.min(pageIndex, pageCount - 1);
+      if (pageLabel) pageLabel.textContent = `Page ${pageIndex + 1} of ${pageCount}`;
+      controls.forEach((button) => {
+        button.disabled = button.dataset.pageDir === 'prev' ? pageIndex === 0 : pageIndex === pageCount - 1;
+      });
+    };
 
-    cards.forEach((card) => {
-      card.hidden = card.dataset.portfolioCategory !== activeCategory;
-      card.style.display = 'none';
+    controls.forEach((button) => {
+      button.addEventListener('click', () => {
+        pageIndex += button.dataset.pageDir === 'next' ? 1 : -1;
+        render();
+      });
     });
 
-    matchingCards.forEach((card, index) => {
-      const onCurrentPage = index >= pageIndex * pageSize && index < (pageIndex + 1) * pageSize;
-      card.style.display = onCurrentPage ? 'flex' : 'none';
-    });
-
-    categoryButtons.forEach((button) => {
-      const selected = button.dataset.portfolioCategory === activeCategory;
-      button.classList.toggle('active', selected);
-      button.setAttribute('aria-pressed', String(selected));
-    });
-
-    pageButtons.forEach((button) => {
-      button.disabled = button.dataset.portfolioDir === 'prev' ? pageIndex === 0 : pageIndex >= pageCount - 1;
-    });
-
-    if (pageLabel) pageLabel.textContent = `Page ${pageIndex + 1} of ${pageCount}`;
-  };
-
-  categoryButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      activeCategory = button.dataset.portfolioCategory;
-      pageIndex = 0;
-      renderPortfolio();
-    });
+    render();
+    window.addEventListener('resize', render);
   });
-
-  pageButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      pageIndex += button.dataset.portfolioDir === 'next' ? 1 : -1;
-      renderPortfolio();
-    });
-  });
-
-  renderPortfolio();
-  window.addEventListener('resize', renderPortfolio);
 };
 
 const setupMenuToggle = () => {
@@ -254,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFilters();
   setupSlider();
   setupFaq();
-  setupPortfolioCarousel();
+  setupPortfolioPagination();
   setupMenuToggle();
   handleFormSubmit();
   mountCartSummary();

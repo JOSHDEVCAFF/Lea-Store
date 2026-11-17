@@ -4,43 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activities &amp; Exercises | Web Project Portfolio</title>
-    <meta
-      name="description"
-      content="A portfolio of web development activities and exercises completed for our subject project."
-    />
+    <meta name="description" content="A portfolio of web development activities and exercises completed for our subject project." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="topbar">
         <div class="brand-wrap">
-          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
           <div class="brand-mark"><span class="brand-icon">LT</span></div>
-          <div class="brand-copy">
-            <div class="brand-name">Lea Tapdasan</div>
-            <div class="brand-tag">Web Project Portfolio</div>
-          </div>
+          <div class="brand-copy"><div class="brand-name">Lea Tapdasan</div><div class="brand-tag">Web Project Portfolio</div></div>
         </div>
-        <div class="status-ticker">
-          <span class="ticker-dot"></span>
-          Activities · Exercises · HTML Projects
-        </div>
+        <div class="status-ticker"><span class="ticker-dot"></span>Activities · Exercises · HTML Projects</div>
         <a href="index.html" class="tray-link">Back to Store →</a>
       </header>
 
       <div class="main-layout">
         <aside class="side-menu" id="sideMenu">
-          <div class="side-menu-header">
-            <div><p class="eyebrow">Project Index</p><h2>Explore</h2></div>
-          </div>
+          <div class="side-menu-header"><div><p class="eyebrow">Project Index</p><h2>Explore</h2></div></div>
           <nav class="side-nav" aria-label="Main navigation">
             <a href="index.html" class="nav-item"><span>01</span> Menu Shop</a>
             <a href="about.html" class="nav-item"><span>02</span> About Us</a>
@@ -57,68 +41,69 @@
           <section class="page-hero simple-hero">
             <p class="eyebrow accent">Subject project · Web development</p>
             <h1>Activities &amp; Exercises</h1>
-            <p class="portfolio-intro">A collection of our class activities and coding exercises. Choose a category, then view the source code or open the HTML output.</p>
+            <p class="portfolio-intro">A collection of our class activities and coding exercises. Browse each section and open the source code or HTML output for a project.</p>
           </section>
 
-          <section class="portfolio-wrap" aria-label="Student web project portfolio">
-            <div class="portfolio-toolbar">
-              <div class="portfolio-categories" role="group" aria-label="Project categories">
-                <button class="filter-btn portfolio-category-btn active" type="button" data-portfolio-category="activities" aria-pressed="true">Activities</button>
-                <button class="filter-btn portfolio-category-btn" type="button" data-portfolio-category="exercises" aria-pressed="false">Exercises</button>
-              </div>
-              <p class="portfolio-count" aria-live="polite" id="portfolioPageCount">Page 1 of 2</p>
+          <section class="portfolio-section" data-portfolio-section aria-labelledby="activitiesTitle">
+            <div class="portfolio-section-heading">
+              <div><p class="eyebrow accent">Section 01</p><h2 id="activitiesTitle">Activities</h2><p>Class activities and project work.</p></div>
+              <span class="portfolio-count" data-page-count aria-live="polite">Page 1 of 2</span>
             </div>
-
-            <div id="portfolioGrid" class="portfolio-grid project-grid" aria-live="polite">
-              <article class="portfolio-card project-card" data-portfolio-category="activities">
+            <div class="portfolio-grid project-grid" data-project-grid>
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">01</span><span class="project-type">Activity</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Activity 01</h3><p>Replace this with the activity title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/activity-01.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="activities">
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">02</span><span class="project-type">Activity</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Activity 02</h3><p>Replace this with the activity title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/activity-02.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="activities">
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">03</span><span class="project-type">Activity</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Activity 03</h3><p>Replace this with the activity title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/activity-03.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="activities">
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">04</span><span class="project-type">Activity</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Activity 04</h3><p>Replace this with the activity title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/activity-04.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
+            </div>
+            <div class="pagination-controls" aria-label="Activities pages"><button class="pagination-btn" type="button" data-page-dir="prev">← Previous</button><button class="pagination-btn" type="button" data-page-dir="next">Next →</button></div>
+          </section>
 
-              <article class="portfolio-card project-card" data-portfolio-category="exercises" hidden>
+          <section class="portfolio-section" data-portfolio-section aria-labelledby="exercisesTitle">
+            <div class="portfolio-section-heading">
+              <div><p class="eyebrow accent">Section 02</p><h2 id="exercisesTitle">Exercises</h2><p>Practice exercises and coding challenges.</p></div>
+              <span class="portfolio-count" data-page-count aria-live="polite">Page 1 of 2</span>
+            </div>
+            <div class="portfolio-grid project-grid" data-project-grid>
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">01</span><span class="project-type">Exercise</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Exercise 01</h3><p>Replace this with the exercise title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/exercise-01.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="exercises" hidden>
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">02</span><span class="project-type">Exercise</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Exercise 02</h3><p>Replace this with the exercise title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/exercise-02.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="exercises" hidden>
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">03</span><span class="project-type">Exercise</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Exercise 03</h3><p>Replace this with the exercise title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/exercise-03.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
-              <article class="portfolio-card project-card" data-portfolio-category="exercises" hidden>
+              <article class="portfolio-card project-card">
                 <div class="project-card-top"><span class="project-number">04</span><span class="project-type">Exercise</span></div>
                 <div class="portfolio-copy"><span>Web development</span><h3>Exercise 04</h3><p>Replace this with the exercise title or a short description.</p></div>
                 <div class="project-actions"><a class="project-link" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">View Code <span>↗</span></a><a class="project-link project-link-output" href="outputs/exercise-04.html" target="_blank" rel="noopener noreferrer">View Output <span>↗</span></a></div>
               </article>
             </div>
-
-            <div class="pagination-controls" aria-label="Portfolio pagination">
-              <button class="pagination-btn" type="button" data-portfolio-dir="prev" aria-label="Previous portfolio page">← Previous</button>
-              <button class="pagination-btn" type="button" data-portfolio-dir="next" aria-label="Next portfolio page">Next →</button>
-            </div>
-            <p class="portfolio-link-note">Replace each sample Google Drive URL with your code link, and update each output path to the matching HTML file.</p>
+            <div class="pagination-controls" aria-label="Exercise pages"><button class="pagination-btn" type="button" data-page-dir="prev">← Previous</button><button class="pagination-btn" type="button" data-page-dir="next">Next →</button></div>
           </section>
+          <p class="portfolio-link-note">Replace each sample Google Drive URL with your source-code link and each output path with the matching HTML file.</p>
         </main>
       </div>
 
